@@ -1,0 +1,189 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #525252;
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(15px + 2vmin);
+  color: white;
+    @media screen and (max-width: 425px) {
+      width: auto;
+    }
+}
+
+.app-body {
+  display: flex;
+  justify-content: space-evenly;
+  background-image: url("https://res.cloudinary.com/dbeloved/image/upload/v1565745421/1157b6fd85f1ff2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 85vh;
+    @media screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 2em;
+  margin: auto;
+    @media screen and (max-width: 768px) {
+      align-items: center;
+    }
+}
+
+.generateButton,
+.downloadButton {
+  background-color: #525252;
+  border-radius: 1em;;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  padding: 15px 10px;
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+    }
+}
+
+.generateButton:active,
+.generateButton:focus,
+.selectBox:active,
+.selectBox:focus,
+.number-box:active,
+.number-box:focus,
+.downloadButton:focus,
+.downloadButton:active  {
+  outline:none;
+}
+
+.selectBox,
+.number-box {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #444;
+  line-height: 1.3;
+  padding: .6em 1.4em .5em .8em;
+  box-sizing: border-box;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  border-radius: .5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+    }
+}
+
+.selectBox {
+  width: 120%;
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+  width: 100%;
+    @media screen and (max-width: 768px) {
+      padding: 10px 30px;
+    }
+    @media screen and (min-width: 769px) and (max-width: 950px) {
+      padding: 10px 20px;
+    }
+}
+
+.number-box {
+  padding: .3em 1.4em .5em .8em;
+}
+
+.maxMin-instance {
+  display: inline-flex;
+  flex-direction: column;
+  margin: 15px;
+  align-items: flex-start;
+    @media screen and (min-width: 769px) and (max-width: 850px) {
+      text-align: left;
+    }
+}
+
+.number-table {
+  margin: auto;
+  background: #949494;
+  height: 30rem;
+  padding: 0 2em;
+  overflow: hidden;
+  width: 30rem;
+    @media screen and (max-width: 768px) {
+      width: fit-content;
+    }
+  height: 70vh;
+  text-align: center;
+  background-color:  #000000;
+  opacity: 0.8;
+  border-radius: 10px;
+  box-shadow: 0 0.4rem 4rem 0 rgba(0, 2, 1, 1);
+}
+
+.scroll {
+  overflow: scroll;
+  height: 25rem;
+  top: 5rem;
+  text-align: center;
+    @media screen and (max-width: 1024px) {
+      height: 23rem;
+    }
+}
+
+table {
+  margin: 25px auto;
+  border-collapse: collapse;
+  border-spacing: 5px;
+  border: 1px solid #4b4949;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px 80px;
+  color: white;
+    @media screen and (min-width: 200px) and (max-width: 320px) {
+      padding: 10px 18px;
+    }
+    @media screen and (min-width: 321px) and (max-width: 425px) {
+      padding: 16px 23px;
+    }
+    @media screen and (min-width: 426px) and (max-width: 520px) {
+      padding: 16px 45px;
+    }
+}
+
+td {
+  background-color: #5e5353;
+  border-radius: 5px;
+}
+
+th {
+  background-color: #726e6e;
+}
+
+.downloadButton {
+  padding: 10px 20px;
+}
+
+footer {
+  font-size: 15px;
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+    }
+  a {
+    text-decoration: none;
+  }
+}
