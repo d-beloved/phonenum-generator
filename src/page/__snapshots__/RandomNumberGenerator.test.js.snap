@@ -17,12 +17,13 @@ exports[`Random phone number Generator should render correctly in "debug" mode 1
     <form
       className="container"
     >
-      <button
-        className="generateButton"
+      <Button
+        className="button"
+        disabled={false}
+        onClick={[Function]}
+        text="Generate Phone numbers"
         type="button"
-      >
-        Generate Phone numbers
-      </button>
+      />
       <div>
         <select
           className="selectBox"
@@ -44,12 +45,23 @@ exports[`Random phone number Generator should render correctly in "debug" mode 1
           </option>
         </select>
       </div>
-      <input
+      <InputBox
         className="number-box"
-        name="input"
+        name="limit"
+        onChange={[Function]}
         placeholder="Enter a limit here..."
         type="text"
       />
+      <div
+        className="error-message"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <span />
+      </div>
       <div
         className="maxMin-instance"
       >
@@ -68,121 +80,27 @@ exports[`Random phone number Generator should render correctly in "debug" mode 1
     <div
       className="number-table"
     >
-      <table>
-        <div
-          className="scroll"
-        >
-          <tr>
-            <th>
-              S/N
-            </th>
-            <th>
-              Phone number
-            </th>
-          </tr>
-          <tr>
-            <td>
-              1
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              2
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              3
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              1
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              2
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              3
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              1
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              2
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              3
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              1
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              2
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-          <tr>
-            <td>
-              3
-            </td>
-            <td>
-              07065349529
-            </td>
-          </tr>
-        </div>
-      </table>
-      <button
-        className="downloadButton"
+      <div
+        className="scroll"
       >
-        Download
-      </button>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                S/N
+              </th>
+              <th>
+                Phone number
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <Button
+        className="button downloadButton"
+        text="Download"
+        type="submit"
+      />
     </div>
   </div>
   <footer>
