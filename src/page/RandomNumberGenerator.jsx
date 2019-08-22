@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Button from '../components/Button/Button';
 import InputBox from '../components/Input/Input';
+import generateNumber from '../helper/generateNumbers';
 import './randomGenerator.scss';
 
 class RandomGenerator extends Component {
@@ -10,13 +11,14 @@ class RandomGenerator extends Component {
       value: '',
       errorMessage: '',
       displayState: 'none',
-      disabled: false
+      disabled: false,
+      limit: '',
+      numbers: []
     };
   }
 
   onInputChange = event => {
     event.preventDefault();
-    console.log('I got called')
     const { value } = event.target;
     if (isNaN(value)) {
       this.setState({
@@ -38,11 +40,20 @@ class RandomGenerator extends Component {
       })
     } else {
       this.setState({
-        value,
+        limit: value,
         displayState: 'none',
+        errorMessage: '',
         disabled: false
       });
     }
+  }
+
+  handleGenerateButton = (event) => {
+    event.preventDefault();
+    const generatedNumbers = generateNumber(this.state.limit);
+    this.setState({
+      numbers: generatedNumbers
+    });
   }
 
   render() {
@@ -59,6 +70,8 @@ class RandomGenerator extends Component {
               className='button'
               type='button'
               text='Generate Phone numbers'
+              onClick={this.handleGenerateButton}
+              disabled={this.state.disabled}
             />
             <div>
               <select className='selectBox'>
@@ -87,62 +100,25 @@ class RandomGenerator extends Component {
             </div>
           </form>
           <div className='number-table'>
-            <table>
-              <div className='scroll'>
-                <tr>
-                  <th>S/N</th>
-                  <th>Phone number</th>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>07065349529</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>07065349529</td>
-                </tr>
-              </div>
-            </table>
+            <div className='scroll'>
+              <table>
+                <tbody>
+                  <tr>
+                    <th>S/N</th>
+                    <th>Phone number</th>
+                  </tr>
+                  {this.state.numbers &&
+                    this.state.numbers.map(randomNumbers => {
+                      return (
+                        <tr key={randomNumbers}>
+                          <td>{this.state.numbers.indexOf(randomNumbers) + 1}</td>
+                          <td>{randomNumbers}</td>
+                        </tr>
+                      )
+                    })}
+                </tbody>
+              </table>
+            </div>
             <Button
               className='button downloadButton'
               type='submit'
