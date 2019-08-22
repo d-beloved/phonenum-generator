@@ -40,8 +40,7 @@
     }
 }
 
-.generateButton,
-.downloadButton {
+.button {
   background-color: #525252;
   border-radius: 1em;;
   color: white;
@@ -53,14 +52,11 @@
     }
 }
 
-.generateButton:active,
-.generateButton:focus,
+.button,
 .selectBox:active,
 .selectBox:focus,
 .number-box:active,
-.number-box:focus,
-.downloadButton:focus,
-.downloadButton:active  {
+.number-box:focus {
   outline:none;
 }
 
@@ -103,6 +99,11 @@
 
 .number-box {
   padding: .3em 1.4em .5em .8em;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
 }
 
 .maxMin-instance {
