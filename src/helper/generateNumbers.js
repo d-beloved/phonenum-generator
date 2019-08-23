@@ -20,6 +20,14 @@ class RandomNumberGenerator{
   static sortInDescendingOrder(numbers) {
     return numbers.sort((a, b) => (b - a));
   }
+
+  static maximumNumber(numbers) {
+    return Math.max(...numbers)
+  }
+
+  static minimumNumber(numbers) {
+    return Math.min(...numbers)
+  }
 }
 
 

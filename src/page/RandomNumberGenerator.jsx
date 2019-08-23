@@ -8,7 +8,9 @@ import './randomGenerator.scss';
 const {
   generateNumbers,
   sortInAscendingOrder,
-  sortInDescendingOrder
+  sortInDescendingOrder,
+  maximumNumber,
+  minimumNumber
 } = RandomNumberGenerator;
 
 class RandomGenerator extends Component {
@@ -22,6 +24,8 @@ class RandomGenerator extends Component {
       limit: '',
       numbers: [],
       order: 'select',
+      maxNum: '',
+      minNum: ''
     };
   }
 
@@ -66,8 +70,13 @@ class RandomGenerator extends Component {
       : order === 'descending' ? sortInDescendingOrder(generatedNumbers)
       : generatedNumbers;
 
+    const maximum = maximumNumber(sortedNumbers);
+    const minimum = minimumNumber(sortedNumbers);
+
     this.setState({
-      numbers: sortedNumbers
+      numbers: sortedNumbers,
+      maxNum: maximum,
+      minNum: minimum
     });
   }
 
@@ -84,6 +93,17 @@ class RandomGenerator extends Component {
   }
 
   render() {
+
+    const {
+      disabled,
+      order,
+      displayState,
+      errorMessage,
+      numbers,
+      maxNum,
+      minNum
+    } = this.state
+
     return (
       <div className="App">
         <header className="App-header">
@@ -98,11 +118,11 @@ class RandomGenerator extends Component {
               type='button'
               text='Generate Phone numbers'
               onClick={this.handleGenerateButton}
-              disabled={this.state.disabled}
+              disabled={disabled}
             />
             <div>
               <select
-                value={this.state.order}
+                value={order}
                 onChange={this.onSelectOrderChange}
                 className='selectBox'
               >
@@ -118,15 +138,15 @@ class RandomGenerator extends Component {
               name='limit'
               onChange={this.onInputChange}
             />
-            <div className='error-message' style={{ display: this.state.displayState }}>
-              <span>{this.state.errorMessage}</span>
+            <div className='error-message' style={{ display: displayState }}>
+              <span>{errorMessage}</span>
             </div>
             <div className="maxMin-instance">
               <label className='max-num'>
-                Max number: some numbers
+                Max number: 0{maxNum}
               </label>
               <label className='min-num'>
-                Min number: some numbers
+                Min number: 0{minNum}
               </label>
             </div>
           </form>
@@ -138,11 +158,11 @@ class RandomGenerator extends Component {
                     <th>S/N</th>
                     <th>Phone number</th>
                   </tr>
-                  {this.state.numbers &&
-                    this.state.numbers.map(randomNumbers => {
+                  {numbers &&
+                    numbers.map(randomNumbers => {
                       return (
                         <tr key={randomNumbers}>
-                          <td>{this.state.numbers.indexOf(randomNumbers) + 1}</td>
+                          <td>{numbers.indexOf(randomNumbers) + 1}</td>
                           <td>{randomNumbers}</td>
                         </tr>
                       )
