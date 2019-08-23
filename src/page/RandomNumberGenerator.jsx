@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import fileDownload from 'js-file-download';
 import Button from '../components/Button/Button';
 import InputBox from '../components/Input/Input';
 import RandomNumberGenerator from '../helper/generateNumbers';
@@ -92,8 +93,17 @@ class RandomGenerator extends Component {
     this.setState({ order: value, numbers: sortedNumbers });
   }
 
-  render() {
+  handleDownload = (event) => {
+    const { numbers } = this.state;
+    event.preventDefault();
+    if (numbers.length === 0) {
+      this.setState({ disabled: true })
+    } else {
+      fileDownload(numbers, 'filename.csv');
+    }
+  }
 
+  render() {
     const {
       disabled,
       order,
@@ -174,6 +184,8 @@ class RandomGenerator extends Component {
               className='button downloadButton'
               type='submit'
               text='Download'
+              disabled={disabled}
+              onClick={this.handleDownload}
             />
           </div>
         </div>
