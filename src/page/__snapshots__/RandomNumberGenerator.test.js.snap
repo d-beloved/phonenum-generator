@@ -70,12 +70,12 @@ exports[`Random phone number Generator should render correctly in "debug" mode 1
         <label
           className="max-num"
         >
-          Max number: some numbers
+          Max number: 0
         </label>
         <label
           className="min-num"
         >
-          Min number: some numbers
+          Min number: 0
         </label>
       </div>
     </form>
