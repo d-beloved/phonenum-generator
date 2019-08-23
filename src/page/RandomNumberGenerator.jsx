@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import Button from '../components/Button/Button';
 import InputBox from '../components/Input/Input';
-import generateNumber from '../helper/generateNumbers';
+import RandomNumberGenerator from '../helper/generateNumbers';
 import './randomGenerator.scss';
+
+
+const {
+  generateNumbers,
+  sortInAscendingOrder,
+  sortInDescendingOrder
+} = RandomNumberGenerator;
 
 class RandomGenerator extends Component {
   constructor(props) {
@@ -13,7 +20,8 @@ class RandomGenerator extends Component {
       displayState: 'none',
       disabled: false,
       limit: '',
-      numbers: []
+      numbers: [],
+      order: 'select',
     };
   }
 
@@ -49,11 +57,30 @@ class RandomGenerator extends Component {
   }
 
   handleGenerateButton = (event) => {
+    const { limit, order } = this.state;
     event.preventDefault();
-    const generatedNumbers = generateNumber(this.state.limit);
+    const generatedNumbers = generateNumbers(limit);
+
+    const sortedNumbers =
+      order === 'ascending' ? sortInAscendingOrder(generatedNumbers)
+      : order === 'descending' ? sortInDescendingOrder(generatedNumbers)
+      : generatedNumbers;
+
     this.setState({
-      numbers: generatedNumbers
+      numbers: sortedNumbers
     });
+  }
+
+  onSelectOrderChange = (event) => {
+    const { numbers } = this.state;
+    const { value } = event.target;
+
+    const sortedNumbers =
+      value === 'ascending' ? sortInAscendingOrder(numbers)
+      : value === 'descending' ? sortInDescendingOrder(numbers)
+      : numbers;
+
+    this.setState({ order: value, numbers: sortedNumbers });
   }
 
   render() {
@@ -74,10 +101,14 @@ class RandomGenerator extends Component {
               disabled={this.state.disabled}
             />
             <div>
-              <select className='selectBox'>
-                <option value='0'>Select order</option>
-                <option value='1'>Ascending order</option>
-                <option value='2'>Descending order</option>
+              <select
+                value={this.state.order}
+                onChange={this.onSelectOrderChange}
+                className='selectBox'
+              >
+                <option value='select'>Select order</option>
+                <option value='ascending'>Ascending order</option>
+                <option value='descending'>Descending order</option>
               </select>
             </div>
             <InputBox
