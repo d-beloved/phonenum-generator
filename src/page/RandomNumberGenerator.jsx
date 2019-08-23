@@ -95,7 +95,6 @@ class RandomGenerator extends Component {
 
   handleDownload = (event) => {
     const { numbers } = this.state;
-    event.preventDefault();
     if (numbers.length === 0) {
       this.setState({ disabled: true })
     } else {

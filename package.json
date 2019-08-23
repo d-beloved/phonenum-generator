@@ -16,7 +16,7 @@
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --watchAll=false",
     "heroku-postbuild": "npm run build",
     "eject": "react-scripts eject"
   },
@@ -24,6 +24,25 @@
     "extends": "react-app"
   },
   "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/public/",
+      "!<rootDir>/src/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": [
+      "json",
+      "text",
+      "lcov",
+      "clover"
+    ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
