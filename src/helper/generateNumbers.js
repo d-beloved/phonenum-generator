@@ -1,5 +1,12 @@
+/**
+ * Phone number generator class
+ */
 class RandomNumberGenerator{
 
+  /**
+   * Generate numbers function
+   * @param {integer} limit
+   */
   static generateNumbers(limit) {
     const phoneNumbers = [];
 
@@ -13,18 +20,34 @@ class RandomNumberGenerator{
     return phoneNumbers;
   }
 
+  /**
+   * Sort array in ascending order
+   * @param {object} numbers
+   */
   static sortInAscendingOrder(numbers) {
     return numbers.sort((a, b) => (a - b));
   }
 
+  /**
+   * Sort array in descending order
+   * @param {object} numbers
+   */
   static sortInDescendingOrder(numbers) {
     return numbers.sort((a, b) => (b - a));
   }
 
+  /**
+   * Returns the maximum number
+   * @param {object} numbers
+   */
   static maximumNumber(numbers) {
     return Math.max(...numbers)
   }
 
+  /**
+   * Returns minimum number in the array
+   * @param {ibject} numbers
+   */
   static minimumNumber(numbers) {
     return Math.min(...numbers)
   }
