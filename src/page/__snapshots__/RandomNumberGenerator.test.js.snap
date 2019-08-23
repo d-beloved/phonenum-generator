@@ -27,19 +27,21 @@ exports[`Random phone number Generator should render correctly in "debug" mode 1
       <div>
         <select
           className="selectBox"
+          onChange={[Function]}
+          value="select"
         >
           <option
-            value="0"
+            value="select"
           >
             Select order
           </option>
           <option
-            value="1"
+            value="ascending"
           >
             Ascending order
           </option>
           <option
-            value="2"
+            value="descending"
           >
             Descending order
           </option>
